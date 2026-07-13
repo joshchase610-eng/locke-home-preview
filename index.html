@@ -43,35 +43,34 @@
   /* ---- Header ---- */
   header{
     position:sticky;top:0;z-index:50;
-    background:rgba(241,237,230,0.9);
+    background:rgba(27,36,48,0.96);
     backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
+    border-bottom:1px solid rgba(250,248,245,.1);
   }
   .nav{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;}
-  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:20px;font-weight:600;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--paper);}
   .brand-mark{width:22px;height:22px;flex-shrink:0;}
   .brand-logo-chip{
     display:flex;align-items:center;
-    background:var(--ink);
-    padding:8px 14px;
-    border-radius:6px;
+    padding:4px 0;
   }
   .brand-logo-chip img{height:34px;width:auto;display:block;}
-  footer .brand-logo-chip{padding:10px 16px;}
+  footer .brand-logo-chip{padding:4px 0;}
   footer .brand-logo-chip img{height:40px;}
   .nav-links{display:flex;gap:36px;font-size:14.5px;}
-  .nav-links a{position:relative;padding:4px 0;}
+  .nav-links a{position:relative;padding:4px 0;color:var(--paper);}
   .nav-links a::after{
-    content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--brass);
+    content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--brass-light);
     transition:width .25s ease;
   }
   .nav-links a:hover::after{width:100%;}
   .nav-cta{
     font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;
-    border:1px solid var(--ink);padding:10px 18px;transition:.2s ease;
+    border:1px solid rgba(250,248,245,.5);color:var(--paper);padding:10px 18px;transition:.2s ease;
   }
-  .nav-cta:hover{background:var(--ink);color:var(--paper);}
-  .menu-btn{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink);}
+  .nav-cta:hover{background:var(--brass);border-color:var(--brass);color:var(--paper);}
+  .menu-btn{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--paper);}
+
 
   /* ---- Hero ---- */
   .hero{
@@ -273,9 +272,8 @@
 
 <section class="hero">
   <div class="hero-copy">
-    <span class="hero-eyebrow">Independent Brokerage — Est. 2009</span>
-    <h1>Find your address, <em>not just a house.</em></h1>
-    <p>Harbor &amp; Keel pairs local market depth with realtors who treat every closing like it's their own family moving day.</p>
+    <h1>Find your next home, <em>not just a house.</em></h1>
+    <p>Locke Real Estate pairs 3 generations of experience and wisdom, for the knowledge and expertise to navigate today's market.</p>
     <div class="hero-actions">
       <a href="#listings" class="btn-primary">Browse listings</a>
       <a href="#agents" class="btn-ghost">Meet the realtors →</a>
@@ -627,7 +625,7 @@
     navLinks.style.top = '64px';
     navLinks.style.left = '0';
     navLinks.style.right = '0';
-    navLinks.style.background = 'var(--linen)';
+    navLinks.style.background = 'var(--ink)';
     navLinks.style.padding = '20px 24px';
     navLinks.style.borderBottom = '1px solid var(--line)';
     navLinks.style.gap = '18px';
