@@ -7,265 +7,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#1B2430;
-    --brass:#A97C50;
-    --brass-light:#C9A876;
-    --linen:#FFFFFF;
-    --sage:#6E7F6C;
-    --paper:#FAF8F5;
-    --charcoal:#2A2A28;
-    --line: rgba(27,36,48,0.12);
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--linen);
-    color:var(--charcoal);
-    font-family:'Inter',sans-serif;
-    line-height:1.5;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;text-decoration:none;}
-  img{display:block;max-width:100%;}
-  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
-  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.01em;}
-  .spec{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:12.5px;
-    letter-spacing:0.04em;
-    text-transform:uppercase;
-    color:var(--brass);
-  }
-  :focus-visible{outline:2px solid var(--brass);outline-offset:3px;}
-
-  /* ---- Header ---- */
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(27,36,48,0.96);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(250,248,245,.1);
-  }
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;}
-  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--paper);}
-  .brand-mark{width:22px;height:22px;flex-shrink:0;}
-  .brand-logo-chip{
-    display:flex;align-items:center;
-    padding:4px 0;
-  }
-  .brand-logo-chip img{height:52px;width:auto;display:block;}
-  footer .brand-logo-chip{padding:4px 0;}
-  footer .brand-logo-chip img{height:40px;}
-  .nav-links{display:flex;gap:36px;font-size:14.5px;}
-  .nav-links a{position:relative;padding:4px 0;color:var(--paper);}
-  .nav-links a::after{
-    content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--brass-light);
-    transition:width .25s ease;
-  }
-  .nav-links a:hover::after{width:100%;}
-  .nav-cta{
-    font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;
-    border:1px solid rgba(250,248,245,.5);color:var(--paper);padding:10px 18px;transition:.2s ease;
-  }
-  .nav-cta:hover{background:var(--brass);border-color:var(--brass);color:var(--paper);}
-  .menu-btn{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--paper);}
-
-
-  /* ---- Hero ---- */
-  .hero{
-    display:grid;grid-template-columns:1.1fr 1fr;align-items:stretch;
-    min-height:88vh;
-  }
-  .hero-copy{
-    display:flex;flex-direction:column;justify-content:center;gap:26px;
-    padding:60px 60px 60px 32px;
-  }
-  .hero-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--sage);}
-  .hero h1{font-size:clamp(40px,5.2vw,68px);line-height:1.04;max-width:14ch;}
-  .hero h1 em{font-style:italic;color:var(--brass);}
-  .hero p{max-width:42ch;color:#4a4a46;font-size:16.5px;}
-  .hero-actions{display:flex;gap:16px;align-items:center;margin-top:6px;}
-  .btn-primary{
-    background:var(--ink);color:var(--paper);padding:15px 26px;font-size:14.5px;font-weight:500;
-    transition:.2s ease;display:inline-block;
-  }
-  .btn-primary:hover{background:var(--brass);}
-  .btn-ghost{font-size:14.5px;font-weight:500;border-bottom:1px solid var(--ink);padding-bottom:2px;}
-  .hero-stats{display:flex;gap:34px;margin-top:28px;border-top:1px solid var(--line);padding-top:22px;}
-  .hero-stats div{display:flex;flex-direction:column;gap:4px;}
-  .hero-stats .num{font-family:'Fraunces',serif;font-size:26px;}
-  .hero-stats .lbl{font-size:12px;color:#6b6b66;text-transform:uppercase;letter-spacing:.05em;}
-  .hero-media{position:relative;overflow:hidden;}
-  .hero-media img{width:100%;height:100%;object-fit:cover;}
-  .hero-key{
-    position:absolute;bottom:28px;left:28px;background:var(--paper);
-    padding:16px 20px;max-width:230px;box-shadow:0 18px 40px rgba(27,36,48,.18);
-  }
-  .hero-key .spec{margin-bottom:6px;}
-  .hero-key p{font-size:13.5px;color:#555;}
-
-  /* ---- Section headers ---- */
-  .section{padding:100px 0;}
-  .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap;}
-  .section-head h2{font-size:clamp(28px,3.4vw,42px);}
-  .section-head .spec{margin-bottom:10px;}
-  .section-head .see-all{font-size:14px;font-weight:500;border-bottom:1px solid var(--ink);padding-bottom:2px;white-space:nowrap;}
-
-  /* ---- Listings ---- */
-  .listings-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
-  }
-  .listing{background:var(--paper);border:1px solid var(--line);transition:transform .25s ease, box-shadow .25s ease;}
-  .listing:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(27,36,48,.12);}
-  .listing.tall{grid-row:span 2;}
-  .listing-media{position:relative;aspect-ratio:4/3;overflow:hidden;}
-  .listing.tall .listing-media{aspect-ratio:4/5.2;}
-  .listing-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
-  .listing:hover .listing-media img{transform:scale(1.05);}
-  .listing-tag{
-    position:absolute;top:14px;left:14px;background:var(--ink);color:var(--paper);
-    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;
-    padding:6px 10px;
-  }
-  .listing-body{padding:20px 22px 24px;}
-  .listing-price{font-family:'Fraunces',serif;font-size:22px;margin-bottom:4px;}
-  .listing-addr{font-size:14px;color:#5a5a56;margin-bottom:14px;}
-  .listing-specs{display:flex;gap:14px;flex-wrap:wrap;}
-
-  /* ---- Open Houses ---- */
-  .openhouse-grid{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);}
-  .openhouse-card{
-    background:var(--paper);display:grid;grid-template-columns:88px 1fr auto;gap:24px;align-items:center;
-    padding:22px 26px;transition:background .2s ease;
-  }
-  .openhouse-card:hover{background:#fff;}
-  .oh-date{
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    border:1px solid var(--line);padding:10px 6px;text-align:center;
-  }
-  .oh-date .dow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--sage);}
-  .oh-date .day{font-family:'Fraunces',serif;font-size:26px;line-height:1.1;}
-  .oh-date .mon{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;color:#8a8a84;}
-  .oh-info h3{font-size:18px;margin-bottom:4px;}
-  .oh-info .oh-addr{font-size:14px;color:#5a5a56;margin-bottom:8px;}
-  .oh-info .oh-meta{display:flex;gap:16px;flex-wrap:wrap;}
-  .oh-actions{display:flex;gap:10px;align-items:center;}
-  .oh-btn{
-    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;
-    border:1px solid var(--ink);padding:9px 16px;white-space:nowrap;transition:.2s ease;
-  }
-  .oh-btn:hover{background:var(--ink);color:var(--paper);}
-  .oh-btn.filled{background:var(--brass);border-color:var(--brass);color:#fff;}
-  .oh-btn.filled:hover{background:var(--ink);border-color:var(--ink);}
-  @media (max-width: 640px){
-    .openhouse-card{grid-template-columns:64px 1fr;}
-    .oh-actions{grid-column:1 / -1;justify-content:flex-start;padding-top:10px;}
-  }
-
-  /* ---- Agents ---- */
-  .agents-scroll{
-    display:flex;gap:24px;overflow-x:auto;padding-bottom:12px;scrollbar-width:thin;
-  }
-  .agent-card{
-    flex:0 0 240px;background:var(--paper);border:1px solid var(--line);
-  }
-  .agent-photo{aspect-ratio:3/4;overflow:hidden;}
-  .agent-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15);}
-  .agent-info{padding:18px 20px 22px;}
-  .agent-info h3{font-size:18px;margin-bottom:2px;}
-  .agent-info .spec{margin-bottom:0;}
-
-  /* ---- Testimonials Carousel ---- */
-  .testi-carousel{position:relative;background:var(--ink);overflow:hidden;min-height:560px;}
-  .tc-slide{
-    position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;
-    opacity:0;visibility:hidden;transition:opacity .6s ease;
-  }
-  .tc-slide.active{opacity:1;visibility:visible;position:relative;}
-  .tc-media{position:relative;overflow:hidden;}
-  .tc-media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.1);}
-  .tc-media::after{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(90deg, rgba(27,36,48,0) 55%, var(--ink) 100%);
-  }
-  .tc-copy{
-    display:flex;flex-direction:column;justify-content:center;gap:18px;
-    padding:60px 70px 60px 40px;color:var(--paper);
-  }
-  .tc-copy h3{font-size:clamp(30px,3.6vw,44px);color:var(--paper);}
-  .tc-role{
-    font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.05em;text-transform:uppercase;
-    color:var(--brass-light);padding-bottom:16px;border-bottom:2px solid var(--brass-light);
-    display:inline-block;width:fit-content;
-  }
-  .tc-quote{font-family:'Fraunces',serif;font-style:italic;font-size:19px;line-height:1.5;color:#e7e3db;max-width:34ch;}
-  .tc-client{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#a8a49c;}
-  .tc-arrow{
-    position:absolute;top:50%;transform:translateY(-50%);z-index:5;
-    width:42px;height:42px;border-radius:50%;border:1px solid rgba(250,248,245,.35);
-    background:rgba(27,36,48,.5);color:var(--paper);font-size:18px;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;transition:.2s ease;
-  }
-  .tc-arrow:hover{background:var(--brass);border-color:var(--brass);}
-  .tc-arrow.prev{left:24px;}
-  .tc-arrow.next{right:24px;}
-  .tc-dots{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:5;}
-  .tc-dot{width:8px;height:8px;border-radius:50%;background:rgba(250,248,245,.35);border:none;cursor:pointer;padding:0;transition:.2s ease;}
-  .tc-dot.active{background:var(--brass-light);width:22px;border-radius:4px;}
-  @media (max-width: 800px){
-    .testi-carousel{min-height:auto;}
-    .tc-slide{grid-template-columns:1fr;}
-    .tc-media{height:280px;}
-    .tc-media::after{background:linear-gradient(0deg, var(--ink) 10%, rgba(27,36,48,0) 60%);}
-    .tc-copy{padding:32px 26px 56px;}
-  }
-
-  /* ---- CTA band ---- */
-  .cta-band{
-    padding:90px 0;text-align:center;
-  }
-  .cta-band h2{font-size:clamp(30px,4vw,48px);max-width:16ch;margin:0 auto 24px;}
-  .cta-band .btn-primary{margin-top:6px;}
-
-  /* ---- Footer ---- */
-  footer{border-top:1px solid var(--line);padding:56px 0 32px;}
-  .foot-top{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;margin-bottom:48px;}
-  .foot-top .brand{margin-bottom:14px;}
-  .foot-top p{font-size:14px;color:#5a5a56;max-width:32ch;}
-  .foot-col h4{font-family:'IBM Plex Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--sage);margin-bottom:14px;}
-  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14.5px;}
-  .foot-bottom{display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:#7a7a74;flex-wrap:wrap;gap:12px;}
-
-  @media (max-width: 900px){
-    .nav-links,.nav-cta{display:none;}
-    .menu-btn{display:block;}
-    .hero{grid-template-columns:1fr;min-height:auto;}
-    .hero-media{height:60vh;}
-    .hero-copy{padding:48px 24px;}
-    .listings-grid{grid-template-columns:1fr;}
-    .listing.tall{grid-row:auto;}
-    .foot-top{grid-template-columns:1fr 1fr;}
-    .section{padding:64px 0;}
-    .wrap{padding:0 20px;}
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
   <nav class="nav wrap">
-    <a href="#" class="brand">
+    <a href="index.html" class="brand">
       <span class="brand-logo-chip"><img src="logo_2022.png" alt="Locke Real Estate Inc. logo"></span>
     </a>
     <div class="nav-links">
-      <a href="#listings">Listings</a>
-      <a href="#open-houses">Open Houses</a>
-      <a href="#agents">Our Realtors</a>
-      <a href="#testimonials">Client Stories</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html#listings">Listings</a>
+      <a href="index.html#open-houses">Open Houses</a>
+      <a href="realtors.html">Our Realtors</a>
+      <a href="index.html#testimonials">Client Stories</a>
+      <a href="index.html#contact">Contact</a>
     </div>
-    <a href="#contact" class="nav-cta">Request a home evaluation</a>
+    <a href="index.html#contact" class="nav-cta">Request a home evaluation</a>
     <button class="menu-btn" aria-label="Open menu">☰</button>
   </nav>
 </header>
@@ -276,7 +34,7 @@
     <p>Locke Real Estate draws on 3 generations of experience to deliver the knowledge and expertise today's market demands.</p>
     <div class="hero-actions">
       <a href="#listings" class="btn-primary">Browse listings</a>
-      <a href="#agents" class="btn-ghost">Meet the realtors →</a>
+      <a href="realtors.html" class="btn-ghost">Meet the realtors →</a>
     </div>
     <div class="hero-stats">
       <div><span class="num">412</span><span class="lbl">Homes closed</span></div>
@@ -479,7 +237,7 @@
         <div class="spec">Meet the team</div>
         <h2>Our realtors</h2>
       </div>
-      <a href="#" class="see-all">All profiles →</a>
+      <a href="realtors.html" class="see-all">All profiles →</a>
     </div>
 
     <div class="agents-scroll">
@@ -583,9 +341,9 @@
       <div class="foot-col">
         <h4>Explore</h4>
         <ul>
-          <li><a href="#listings">Listings</a></li>
-          <li><a href="#agents">Our realtors</a></li>
-          <li><a href="#testimonials">Client stories</a></li>
+          <li><a href="index.html#listings">Listings</a></li>
+          <li><a href="realtors.html">Our realtors</a></li>
+          <li><a href="index.html#testimonials">Client stories</a></li>
         </ul>
       </div>
       <div class="foot-col">
